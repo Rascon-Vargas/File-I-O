@@ -69,10 +69,12 @@ public class Contacts {
                         String lastName = scanner.next();
 
                         System.out.println("Please enter the contacts phone number: ");
-                        String contactNumber = scanner.next();
+                        String input = scanner.next();
+
+                        String number = input.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
 
                         String contactName = firstName + " " + lastName;
-                        String contactInfo = contactName + " | " + contactNumber;
+                        String contactInfo = contactName + " | " + number;
 
                         Files.write(contactTXTPath, Arrays.asList(contactInfo), StandardOpenOption.APPEND);
 
